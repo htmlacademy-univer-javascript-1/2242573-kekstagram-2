@@ -1,11 +1,11 @@
-import { isEscapeKey } from './util.js';
+import { isEscapeKey } from '../utils/util.js';
 import { resetEffectSettings } from './effects.js';
 import { resetScaleModifier } from './scale.js';
-import { popupStatus } from './popup-open.js';
+import { popupStatus } from '../utils/popup-open.js';
 
 const uploadForm = document.querySelector('#upload-file');
 const pictureWindow = document.querySelector('.img-upload__overlay');
-const closeButton = document.querySelector('.img-upload__cancel');
+const closeButton = pictureWindow.querySelector('.img-upload__cancel');
 const form = document.querySelector('.img-upload__form');
 
 const onDocumentEscapeKeyDown = (evt) => {
