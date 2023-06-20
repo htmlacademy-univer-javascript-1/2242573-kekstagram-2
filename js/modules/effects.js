@@ -1,10 +1,10 @@
 const DEFAULT_START_VALUE = 100;
 
 const sliderContainer = document.querySelector('.effect-level');
-const sliderElement = document.querySelector('.effect-level__slider');
+const sliderElement = sliderContainer.querySelector('.effect-level__slider');
 const picturePreview = document.querySelector('.img-upload__preview img');
 const effects = document.querySelector('.effects__list');
-const effectValue = document.querySelector('.effect-level__value');
+const effectValue = sliderContainer.querySelector('.effect-level__value');
 
 let currentEffect = '';
 let effectUnitMeasure = '';

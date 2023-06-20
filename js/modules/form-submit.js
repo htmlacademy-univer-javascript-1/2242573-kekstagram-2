@@ -1,5 +1,5 @@
 import { sendRequest } from './fetch.js';
-import { openPopup } from './popup-open.js';
+import { openPopup } from '../utils/popup-open.js';
 import { closePictureWindow } from './form.js';
 
 const formUpload = document.querySelector('.img-upload__form');

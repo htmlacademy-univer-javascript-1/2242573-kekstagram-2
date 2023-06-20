@@ -1,12 +1,13 @@
-import './photos.js';
-import './form.js';
-import './scale.js';
-import './effects.js';
-import './form-submit.js';
-import './hashtag.js';
-import { activateFilterButton } from './filter-list.js';
-import { createPicture } from './photos.js';
-import { sendRequest } from './fetch.js';
+import './modules/photos.js';
+import './modules/form.js';
+import './modules/scale.js';
+import './modules/effects.js';
+import './modules/form-submit.js';
+import './modules/hashtag.js';
+import './modules/file-upload.js';
+import { activateFilterButton } from './modules/filter-list.js';
+import { createPicture } from './modules/photos.js';
+import { sendRequest } from './modules/fetch.js';
 
 let photos = [];
 
