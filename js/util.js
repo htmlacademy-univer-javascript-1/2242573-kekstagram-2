@@ -1,15 +1,21 @@
-const randomiseNumber = (minNumber, maxNumber) => {
-  if (minNumber < 0 || maxNumber < 0) {
-    return -1;
-  }
-
-  if (minNumber > maxNumber) {
-    [minNumber, maxNumber] = [maxNumber, minNumber];
-  }
-
-  return Math.floor(Math.random() * (maxNumber - minNumber + 1) + minNumber);
-};
-
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
-export{randomiseNumber, isEscapeKey};
+const debounce = (callback, timeoutDelay = 500) => {
+  let timeoutId;
+
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+};
+
+const convertArray = (array) => {
+  const copyArray = array.slice();
+  for (let i = copyArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copyArray[i], copyArray[j]] = [copyArray[j], copyArray[i]];
+  }
+  return copyArray;
+};
+
+export{isEscapeKey, debounce, convertArray};
