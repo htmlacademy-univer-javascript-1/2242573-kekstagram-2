@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Muaamar Mohammed](https://up.htmlacademy.ru/univer-js1/2/user/2242573).
-* Наставник: `Неизвестно`.
+* Наставник: [Олег Глущенко](https://up.htmlacademy.ru/univer-js1/2/user/2242573).
 
 ---
 
