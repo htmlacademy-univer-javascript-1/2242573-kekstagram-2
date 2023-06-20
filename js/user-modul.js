@@ -60,7 +60,7 @@ const showFullImage = (photo, photoData) => {
       }
     };
 
-    if (photoData.comments.length <= 5) {
+    if (photoData.comments.length <= COMMENTS_COUNT) {
       photoData.comments.forEach((comment) => {
         comments.appendChild(createComment(comment));
       });
