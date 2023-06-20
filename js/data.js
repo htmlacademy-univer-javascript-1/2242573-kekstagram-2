@@ -1,70 +1,49 @@
-/* eslint-disable no-unused-vars */
+import { randomiseNumber } from './util.js';
 
-import {getRandomArrayElement,getRandomPositiveInteger} from './util.js';
+const COUNT = 25;
 
-const DESCRIPTION = [
-  'Супер',
-  'Красота',
+const NAMES = [
+  'Ваня',
+  'Артём',
+  'Анна',
+  'Саша',
+  'Владислав'
 ];
 
-const MESSAGE = [
-  'Всё отлично!',
-  'В целом всё неплохо. Но не всё.',
-  'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
-  'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
-  'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
-  'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
-];
+const Like = {
+  MIN: 15,
+  MAX: 200
+};
 
-const NAME = [
-  'Александра',
-  'Вера',
-  'Андрей',
-  'Антон',
-];
+const Comment = {
+  MIN: 1,
+  MAX: 10
+};
 
-const NUMBER_OF_PHOTOS =25;
-const commentsId =[];
-const MIN_LIKES = 15;
-const MAX_LIKES = 200;
-const MAX_COMMENT_ID = 1000;
-const MIN_IMAGE = 1;
-const MAX_IMAGE = 6;
+const addComment = () => ({
+  id: 135,
+  avatar: `img/avatar${randomiseNumber(1, 6)}.svg`,
+  message: 'Всё отлично!',
+  name: NAMES[randomiseNumber(0, NAMES.length - 1)]
+});
 
-function generateCommentId () {
-  let newId =0;
-  do{
-    newId = getRandomPositiveInteger(1,MAX_COMMENT_ID);
-  }
-  while (Array.prototype.indexOf(commentsId,newId) !==-1);
-  commentsId.push(newId);
-  return newId;
-}
+const createComments = () => {
+  const commentsList = Array.from({length: randomiseNumber(Comment.MIN, Comment.MAX)}, addComment);
+  return commentsList;
+};
 
-function createComment (){
+let id = 0;
+
+const addPhoto = () => {
+  id++;
   return {
-    id: generateCommentId(),
-    avatar : `img/avatar${getRandomPositiveInteger(MIN_IMAGE,MAX_IMAGE)}.svg `,
-    MESSAGE : getRandomArrayElement(MESSAGE),
-    name: getRandomArrayElement(NAME)
+    id: id,
+    url: `photos/${id}.jpg`,
+    description: 'В целом всё неплохо. Но не всё.',
+    likes: randomiseNumber(Like.MIN, Like.MAX),
+    comments: createComments()
   };
-}
+};
 
-function createPicture (index) {
-  return {
-    id: index+1,
-    url: `photos/${index +1}.jpg`,
-    DESCRIPTION : getRandomArrayElement(DESCRIPTION),
-    likes: getRandomPositiveInteger(MIN_LIKES,MAX_LIKES),
-    comments: createComment()
-  };
-}
-
-function lenghtString(string , maxLenght)
-{
-  return string.lenght <=maxLenght;
-}
-
-const generateData = Array.from({length: NUMBER_OF_PHOTOS},(cur,i) => createPicture(i) );
-
-export{generateData};
+const photos = () => Array.from({length: COUNT}, addPhoto);
+export {photos};
